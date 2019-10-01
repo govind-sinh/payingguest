@@ -28,8 +28,8 @@ export class TenantFormComponent implements OnInit {
   }
 
   setForm() {
-    if (this.data) {
-      const { name, address, aadhar, pan} = this.data;
+    const { name, address, aadhar, pan} = this.data;
+    if (name) {
       this.tenantDetailForm.setValue({
         name,
         address,
@@ -50,11 +50,24 @@ export class TenantFormComponent implements OnInit {
     } else if(aadhar === '') {
       return alert('Please enter aadhar number')
     }
-    this.tenantService.saveTenant(value).subscribe((res) => {
-      this.bsModalRef.hide();
-    }, err => {
-      alert(err.message);
-    });
+    const { _id } = this.data;
+    if (_id) {
+      const data = value;
+      data['_id'] = _id;
+      this.tenantService.editTenant(data).subscribe((res) => {
+        alert(res['message']);
+        location.reload();
+      }, err => {
+        alert(err['message']);
+      })
+    } else {
+      this.tenantService.saveTenant(value).subscribe((res) => {
+        this.bsModalRef.hide();
+        location.reload();
+      }, err => {
+        alert(err.message);
+      });
+    }
   }
 
 }

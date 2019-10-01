@@ -19,7 +19,6 @@ export class TenantsListComponent implements OnInit {
   }
 
   openEditModel(data) {
-    console.log("Opening edit model");
     this.bsModalRef = this.modalService.show(TenantFormComponent, {initialState: {title: "PG Mgmt", data}});
     this.bsModalRef.content.closeBtnName = 'Close';
   }
@@ -43,7 +42,6 @@ export class TenantsListComponent implements OnInit {
   }
  
   confirm(): void {
-    // this.message = 'Confirmed!';
     this.bsModalRef.hide();
     if(this.id) {
       const body = { tenantId: this.id};
@@ -57,7 +55,6 @@ export class TenantsListComponent implements OnInit {
   }
  
   decline(): void {
-    // this.message = 'Declined!';
     this.bsModalRef.hide();
   }
 }
