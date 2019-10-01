@@ -19,7 +19,15 @@
     <td>{{l.aadhar}}</td>
     <td><div class="btn-group">
       <label class="btn btn-primary" btnCheckbox tabindex="0" role="button" (click)="openEditModel(l)"><i class='far fa-edit' style='color:white'></i></label>
-      <label class="btn btn-primary" btnCheckbox tabindex="0" role="button" (click)="confirmDeletion()"><i class='far fa-trash-alt' style='color:white'></i></label>
+      <label class="btn btn-primary" btnCheckbox tabindex="0" role="button" (click)="confirmDeletion(deleteTemplate, l._id)"><i class='far fa-trash-alt' style='color:white'></i></label>
     </div></td>
   </tr>
 </table>
+
+<ng-template #deleteTemplate>
+  <div class="modal-body text-center">
+    <p>Do you want to delete?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+  </div>
+</ng-template>

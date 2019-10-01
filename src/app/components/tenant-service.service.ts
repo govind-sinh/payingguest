@@ -16,4 +16,8 @@ export class TenantServiceService {
   public saveTenant(data){
     return this.httpClient.post(`${this.url}/tenant`, data);
   }
+
+  public deleteTenant(data) {
+    return this.httpClient.post(`${this.url}/tenant/remove`, data);
+  }
 }
