@@ -1,0 +1,25 @@
+<button type="button" class="btn btn-primary new-tenant" (click)="createModel()">
+  Add New Tenant
+</button>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Pan</th>
+    <th>Aadhar</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngIf="list.length === 0">
+    <td>No Record found</td>
+  </tr>
+  <tr *ngFor="let l of list">
+    <td>{{l.name}}</td>
+    <td>{{l.address}}</td>
+    <td>{{l.pan}}</td>
+    <td>{{l.aadhar}}</td>
+    <td><div class="btn-group">
+      <label class="btn btn-primary" btnCheckbox tabindex="0" role="button" (click)="openEditModel(l)"><i class='far fa-edit' style='color:white'></i></label>
+      <label class="btn btn-primary" btnCheckbox tabindex="0" role="button" (click)="confirmDeletion()"><i class='far fa-trash-alt' style='color:white'></i></label>
+    </div></td>
+  </tr>
+</table>
